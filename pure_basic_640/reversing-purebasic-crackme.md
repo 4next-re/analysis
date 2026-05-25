@@ -96,7 +96,6 @@ PB_Mid2
 PB_Asc
 PB_Hex
 PB_RSet2
-PB_String_UCase
 PB_Console_Print
 PB_Console_Input
 ...
