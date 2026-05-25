@@ -1,8 +1,8 @@
-# PureBasic FLIRT Signatures for IDA Pro — Demonstration
+# PureBasic FLIRT Signatures for Hex-Rays IDA — Demonstration
 
 ![IDA FLIRT Signature for PureBasic](./assets/IDA%20FLIRT%20Signature%20for%20PureBasic.png)
 
-What an [IDA Pro](https://hex-rays.com/ida-pro/) FLIRT signature does to a binary compiled with **PureBasic** (Windows, PE x86/x64): it lets the disassembler recognize and label the statically-linked runtime functions automatically, so the author's own code stops being lost in a sea of anonymous library routines.
+What an [Hex/Rays IDA](https://hex-rays.com/ida-pro/) FLIRT signature does to a binary compiled with **PureBasic** (Windows, PE x86/x64): it lets the disassembler recognize and label the statically-linked runtime functions automatically, so the author's own code stops being lost in a sea of anonymous library routines.
 
 This repo is a **demonstration**, built around a small crackme I wrote and compiled myself. It is not a guide to generating the signature.
 
@@ -10,7 +10,7 @@ This repo is a **demonstration**, built around a small crackme I wrote and compi
 
 When you load a PureBasic-compiled executable into IDA, every runtime library routine shows up as an anonymous `sub_XXXXXX`. The entire PureBasic runtime is statically linked into the binary, so you scroll through dozens of these just to find the handful of functions the author actually wrote — and those functions are themselves built out of calls into the unnamed runtime.
 
-[FLIRT](https://hex-rays.com/products/ida/tech/flirt/) (Fast Library Identification and Recognition Technology) is what fixes this. It is the same mechanism IDA already ships for the Visual C++, Delphi, and Go runtimes. Once a PureBasic signature is applied, the runtime functions get named and the author's code becomes legible.
+[FLIRT](https://docs.hex-rays.com/core/flirt) (Fast Library Identification and Recognition Technology) is what fixes this. It is the same mechanism IDA already ships for the Visual C++, Delphi, and Go runtimes. Once a PureBasic signature is applied, the runtime functions get named and the author's code becomes legible.
 
 ![image-20260525144058744](./assets/image-20260525144058744.png)
 
@@ -30,7 +30,7 @@ Whether a ready-made signature can be shared publicly is a question I've put to 
 ## Reproduce the analysis
 
 1. Compile `crackme.pb` with [PureBasic](https://www.purebasic.com) for Windows.
-2. Load the resulting `.exe` into IDA Pro and let auto-analysis finish.
+2. Load the resulting `.exe` into IDA and let auto-analysis finish.
 3. Open the Functions window — observe the wall of `sub_XXXXXX`.
 4. (With a PureBasic signature applied) re-open the Functions window and watch the runtime get named, leaving your `ComputeSerial` routine as the obvious odd one out.
 
